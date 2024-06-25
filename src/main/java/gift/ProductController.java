@@ -14,13 +14,20 @@ import java.util.Map;
 @RequestMapping("/api/products")
 public class ProductController {
     private final Map<Long, Product> products = new HashMap<>();
-    private long currentId = 0;
+
 
     @PostMapping
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        currentId++;
-        product.setId(currentId);
-        products.put(currentId, product);
+        Long productId = product.getId();
+
+        if (productId == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        if (products.containsKey(productId)) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        products.put(productId, product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
     @GetMapping
@@ -34,8 +41,10 @@ public class ProductController {
         if (!products.containsKey(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
         updatedProduct.setId(id);
         products.put(id, updatedProduct);
+
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
 
