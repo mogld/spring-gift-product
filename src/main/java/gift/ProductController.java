@@ -39,7 +39,14 @@ public class ProductController {
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
 
-   
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        if (!products.containsKey(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        products.remove(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 
 }
