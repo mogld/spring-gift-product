@@ -29,8 +29,18 @@ public class ProductController {
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        if (!products.containsKey(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        updatedProduct.setId(id);
+        products.put(id, updatedProduct);
+        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+    }
 
    
+
 
 }
 
