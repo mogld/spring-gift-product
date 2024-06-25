@@ -23,7 +23,14 @@ public class ProductController {
         products.put(currentId, product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> productList = new ArrayList<>(products.values());
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
 
+
+   
 
 }
 
