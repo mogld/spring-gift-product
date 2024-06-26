@@ -2,16 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>New Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>New Product</h1>
-<form th:action="@{/products}" th:object="${product}" method="post">
-
-    <label>Name: <input type="text" th:field="*{name}"/></label><br/>
-    <label>price: <input type="number" th:field="*{price}" /></label><br/>
-    <label>ImageUrl: <input type="url" th:field="*{imageUrl}"/></label><br/>
-
-    <button type="submit">Save</button>
-</form>
+<div class="container">
+    <h1 class="mt-4">상품 추가</h1>
+    <form th:action="@{/products}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" th:field="*{name}"/>
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="number" class="form-control" th:field="*{price}"/>
+        </div>
+        <div class="form-group">
+            <label>Image URL:</label>
+            <input type="url" class="form-control" th:field="*{imageUrl}"/>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
 </body>
 </html>
