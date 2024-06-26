@@ -21,7 +21,10 @@ public class ProductController {
         Long productId = product.getId();
 
         if (productId == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            //id값 자동생성
+                productId = (long) (products.size() + 1);
+                product.setId(productId);
+
         }
         if (products.containsKey(productId)) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
