@@ -31,7 +31,7 @@ public class WebControllerTest {
 
     @BeforeEach
     void setUp() {
-        product = new Product(1L, "Product1", 100, "https://image.nongshim.com/non/pro/1647822565539.jpg");
+        product = new Product(1L, "Product1", 100, "https://image.nongshim.com/non/pro/1647822565539.jpg", Collections.singletonList(new Option(1L,"Option1",10)));
     }
 
     // 상품 목록 페이지 테스트
