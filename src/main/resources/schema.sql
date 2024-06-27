@@ -2,7 +2,7 @@ CREATE TABLE products (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
                           name VARCHAR(255) NOT NULL,
                           price INT NOT NULL,
-                          imageUrl VARCHAR(255)
+                          imageUrl VARCHAR(1000)
 );
 
 CREATE TABLE options (
