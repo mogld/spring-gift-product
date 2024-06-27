@@ -26,7 +26,8 @@
 - 상품옵션 추가, 수정, 삭제 구현
 - Option.java 및 Thymeleaf 수정
 
-### jdbcTemplate 이용한 데이터베이스 적용하기
+
+### JdbcTemplate 이용한 데이터베이스 적용하기
 1. application.properties로 H2 데이터베이스 설정
 2. schema.sql, data.sql 작성
 3. JdbcTemplate 사용해 데이터베이스와 연동
